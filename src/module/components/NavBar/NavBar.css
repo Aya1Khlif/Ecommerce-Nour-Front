@@ -1,0 +1,25 @@
+.navBar {
+  position: absolute;
+  z-index: 555;
+  top: 30px;  
+  background-color: transparent;
+}
+ .cart {
+  font-size: 30px;
+  position: relative;
+}
+
+.logo{
+  font-size: 2rem;
+  margin: -1rem;
+  font-weight: 700;
+}
+.counter{
+  border-radius: 40px;
+  width: 22px;
+  height: 18px;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+
+}
