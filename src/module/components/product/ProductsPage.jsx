@@ -54,7 +54,7 @@ const Products = () => {
   const handleAddToCart = (product) => {
     if (!loggedIn) {
       alert('Please log in to add products to your cart.');
-      navigate('/login'); // إعادة التوجيه إلى صفحة تسجيل الدخول إذا لم يكن المستخدم مسجل الدخول
+      navigate('/login'); 
       return;
     }
 

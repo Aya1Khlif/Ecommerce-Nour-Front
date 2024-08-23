@@ -3,7 +3,7 @@ import { useInView } from 'react-intersection-observer';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import './Contact.css'
 const ContactUs = () => {
   const { ref, inView } = useInView({
     triggerOnce: false, // Restart animation when the section comes into view
@@ -56,7 +56,7 @@ const ContactUs = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              className="mt-1 w-full  rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
               placeholder="Your Name"
               required
             />
@@ -81,7 +81,7 @@ const ContactUs = () => {
               name="message"
               value={formData.message}
               onChange={handleChange}
-              className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+              className="mt-1 w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
               rows="4"
               placeholder="Your Message"
               required

@@ -1,0 +1,12 @@
+input[type="text"]{
+    height: 50px;
+    padding: 20px;
+}
+input[type="email"]{
+    height: 50px;
+    padding: 20px;
+}
+textarea{
+    height: 100px;
+    
+}
