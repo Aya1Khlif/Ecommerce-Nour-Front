@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "../../redux/cartSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -12,9 +12,9 @@ const Products = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
-  
+  const navigate = useNavigate(); // Initialize navigate hook
   const { ref, inView } = useInView({
-    triggerOnce: false, // Trigger animation every time the section comes into view
+    triggerOnce: false,
     threshold: 0.2,
   });
 
@@ -45,6 +45,20 @@ const Products = () => {
     fetchProducts();
   }, [apiUrl]);
 
+  // Check if user is logged in
+  const isLoggedIn = () => {
+    return !!localStorage.getItem("token"); // Check if token exists in localStorage
+  };
+
+  const handleAddToCart = (product) => {
+    if (!isLoggedIn()) {
+      alert("Please log in to add items to the cart.");
+      navigate("/login"); // Redirect to login page
+    } else {
+      dispatch(addItemToCart(product)); // Add item to cart if logged in
+    }
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
@@ -71,7 +85,7 @@ const Products = () => {
                   Watches
                 </h2>
                 <p className="mt-4 text-sky-500">
-                 The website it is a big e-commerce to buy the product ...
+                  The website it is a big e-commerce to buy the product ...
                 </p>
               </header>
               <a
@@ -112,7 +126,7 @@ const Products = () => {
                       </p>
                       <button
                         className="mt-4 inline-block w-full rounded bg-sky-900 px-6 py-2 text-sm font-medium text-white transition hover:bg-sky-700"
-                        onClick={() => dispatch(addItemToCart(product))}
+                        onClick={() => handleAddToCart(product)}
                       >
                         Add to Cart
                       </button>
