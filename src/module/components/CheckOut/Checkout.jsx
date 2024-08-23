@@ -36,7 +36,7 @@ const Checkout = () => {
 
     // Redirect to /home after 3 seconds
     setTimeout(() => {
-      navigate('/home');
+      navigate('/');
     }, 3000);
   };
 
