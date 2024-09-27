@@ -15,6 +15,7 @@ import Brands from './module/components/Brand/Brand';
 import Orders from './module/components/Orders/Orders';
 import Categories from './module/components/Categories/Categories';
 import { useState } from 'react';
+import AddProduct from './module/components/product/AddProduct';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -43,6 +44,7 @@ function App() {
         <Route path='/order' element={<Orders />} />
         <Route path='*' element={<Eroore />} />
         <Route path='products' element={<Products />} />
+        <Route path="/add-product" element={<AddProduct />} />
         <Route path='category' element={<Categories />} />
         <Route path='ProductsDetails/:id' element={<ProductDetail />} />
       </Routes>

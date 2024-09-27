@@ -45,29 +45,28 @@ const Categories = () => {
       setError("The name field is required.");
       return;
     }
-
+  
     const formData = new FormData();
     formData.append("name", name);
     if (image) {
       formData.append("image", image);
     }
-
+  
     try {
       const url = isEditing
         ? `${API_URL}/categories/update/${editId}`
         : `${API_URL}/categories/store`;
       const method = isEditing ? "put" : "post";
-
-      // const response = await axios({
-      //   method,
-      //   url,
-      //   data: formData,
-      //   headers: {
-      //     "Content-Type": "multipart/form-data",
-      //   },
-      // });
-      const response = await axios[method](url, { name });
-
+  
+      const response = await axios({
+        method: method,
+        url: url,
+        data: formData,
+        headers: {
+          "Content-Type": "multipart/form-data", // يجب استخدام هذا النوع من المحتوى عند إرسال ملفات
+        },
+      });
+  
       setSuccess(response.data.message);
       setName(""); 
       setImage(null);
@@ -81,7 +80,6 @@ const Categories = () => {
       );
     }
   };
-
   const handleEdit = (category) => {
     setName(category.name);
     setEditId(category.id);
