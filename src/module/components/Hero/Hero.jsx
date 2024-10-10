@@ -5,8 +5,8 @@ import "./Hero.css";
 
 const Hero = () => {
   const { ref, inView } = useInView({
-    triggerOnce: false, // This will allow the animation to trigger every time the component comes into view
-    threshold: 0.1, // Percentage of the component visible to trigger the animation
+    triggerOnce: false, 
+    threshold: 0.1
   });
 
   return (

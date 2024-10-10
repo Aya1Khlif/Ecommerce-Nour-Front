@@ -12,7 +12,7 @@ const Products = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // Initialize navigate hook
+  const navigate = useNavigate(); 
   const { ref, inView } = useInView({
     triggerOnce: false,
     threshold: 0.2,
@@ -45,17 +45,17 @@ const Products = () => {
     fetchProducts();
   }, [apiUrl]);
 
-  // Check if user is logged in
+
   const isLoggedIn = () => {
-    return !!localStorage.getItem("token"); // Check if token exists in localStorage
+    return !!localStorage.getItem("token"); 
   };
 
   const handleAddToCart = (product) => {
     if (!isLoggedIn()) {
       alert("Please log in to add items to the cart.");
-      navigate("/login"); // Redirect to login page
+      navigate("/login");
     } else {
-      dispatch(addItemToCart(product)); // Add item to cart if logged in
+      dispatch(addItemToCart(product)); 
     }
   };
 

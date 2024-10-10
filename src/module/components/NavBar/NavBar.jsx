@@ -1,9 +1,9 @@
-// NavBar.jsx
 import { useState } from "react";
 import { IoCart } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import logo from '../../../assets/imges/LOGO.jpg'
 import "./NavBar.css";
 
 const NavBar = ({ loggedIn, onLogout }) => {
@@ -35,7 +35,7 @@ const NavBar = ({ loggedIn, onLogout }) => {
         if (response.data.status) {
           alert(response.data.message);
           localStorage.removeItem("token");
-          onLogout(); // Call the onLogout function to update the state in App component
+          onLogout(); 
           navigate("/");
         } else {
           alert("Logout failed. Please try again.");
@@ -46,7 +46,7 @@ const NavBar = ({ loggedIn, onLogout }) => {
         if (error.response && error.response.status === 401) {
           alert("Session expired. Please log in again.");
           localStorage.removeItem("token");
-          onLogout(); // Call the onLogout function to update the state in App component
+          onLogout(); 
           navigate("/");
         } else {
           alert("An unexpected error occurred. Please try again later.");
@@ -55,41 +55,48 @@ const NavBar = ({ loggedIn, onLogout }) => {
   };
 
   const handleOrderClick = () => {
-    if (!loggedIn) {
+    const token = localStorage.getItem("token"); 
+    if (!token) {
       alert("Please log in to access the Order page.");
       navigate("/login");
     } else {
       navigate("/order");
     }
   };
-
+  
   const handleCategoryClick = () => {
-    if (!loggedIn) {
+    const token = localStorage.getItem("token");
+    if (!token) {
       alert("Please log in to access the Category page.");
       navigate("/login");
     } else {
       navigate("/category");
     }
   };
-
+  
   const handleBrandClick = () => {
-    if (!loggedIn) {
+    const token = localStorage.getItem("token");
+    if (!token) {
       alert("Please log in to access the Brand page.");
       navigate("/login");
     } else {
       navigate("/brand");
     }
   };
-
-  // New function to handle clicking on the cart icon
+  
+  
   const handleCartClick = () => {
-    if (!loggedIn) {
+    const token = localStorage.getItem("token"); 
+    if (!token) {
       alert("Please log in to view your cart.");
       navigate("/login");
     } else {
       navigate("/cart");
     }
   };
+  
+ 
+  
 
   return (
     <header className="fixed top-0 left-0 w-full bg-gray-50 z-50">
@@ -177,7 +184,6 @@ const NavBar = ({ loggedIn, onLogout }) => {
             </div>
 
             <div className="cart flex items-center text-center relative">
-              {/* Use the new function handleCartClick */}
               <button onClick={handleCartClick} className="text-sky-800 text-2xl">
                 <IoCart className="text-sky-800 text-2xl" />
               </button>
