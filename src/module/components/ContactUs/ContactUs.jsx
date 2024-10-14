@@ -1,9 +1,9 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import './Contact.css'
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./Contact.css";
 const ContactUs = () => {
   const { ref, inView } = useInView({
     triggerOnce: false, // Restart animation when the section comes into view
@@ -16,9 +16,9 @@ const ContactUs = () => {
   };
 
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const handleChange = (e) => {
@@ -28,8 +28,8 @@ const ContactUs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    toast.success('Message sent successfully!');
-    setFormData({ name: '', email: '', message: '' });
+    toast.success("Message sent successfully!");
+    setFormData({ name: "", email: "", message: "" });
   };
 
   return (
@@ -37,20 +37,23 @@ const ContactUs = () => {
       <motion.div
         className="mx-auto max-w-screen-md px-4 py-8 sm:px-6 lg:px-8"
         initial="hidden"
-        animate={inView ? 'visible' : 'hidden'}
+        animate={inView ? "visible" : "hidden"}
         variants={sectionVariants}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <h2 className="text-3xl font-bold text-center text-sky-800 sm:text-4xl">
           Get in Touch
         </h2>
         <p className="mt-4 text-center text-gray-600">
-          We would love to hear from you! Please fill out the form below and we’ll get in touch with you as soon as possible.
+          We would love to hear from you! Please fill out the form below and
+          we’ll get in touch with you as soon as possible.
         </p>
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Name</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Name
+            </label>
             <input
               type="text"
               name="name"
@@ -63,7 +66,9 @@ const ContactUs = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Email
+            </label>
             <input
               type="email"
               name="email"
@@ -76,7 +81,9 @@ const ContactUs = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Message</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Message
+            </label>
             <textarea
               name="message"
               value={formData.message}
@@ -99,6 +106,13 @@ const ContactUs = () => {
             </motion.button>
           </div>
         </form>
+        <div className="container">
+          <p>email:</p>
+          <p>admin@admin.com</p>
+          <br />
+          <p>Phone:</p>
+          <p>033256369</p>
+        </div>
         <ToastContainer />
       </motion.div>
     </section>

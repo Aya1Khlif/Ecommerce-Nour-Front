@@ -61,7 +61,27 @@ const Products = () => {
   };
 
   const handleAddNewProduct = () => {
-    navigate('/add-product'); // توجيه المستخدم إلى صفحة إضافة المنتج
+    navigate('/add-product');
+  };
+
+  const handleDeleteProduct = (id) => {
+    if (!loggedIn) {
+      alert('Please log in to delete products.');
+      navigate('/login');
+      return;
+    }
+
+    if (window.confirm('Are you sure you want to delete this product?')) {
+      axios
+        .delete(`${apiUrl}/products/destroy/${id}`)
+        .then((response) => {
+          alert('Product deleted successfully!');
+          setProducts(products.filter((product) => product.id !== id)); // تحديث قائمة المنتجات بعد الحذف
+        })
+        .catch(() => {
+          alert('Error deleting the product!');
+        });
+    }
   };
 
   const filteredProducts = selectedBrand
@@ -80,7 +100,6 @@ const Products = () => {
     <div className="p-4">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Product List</h1>
-      
       </div>
       <div className="mb-4 py-5 m-2">
         <select
@@ -94,13 +113,12 @@ const Products = () => {
             </option>
           ))}
         </select>
-       <button
+        <button
           className="bg-green-600 text-white py-2 m-2 px-4 rounded"
           onClick={handleAddNewProduct}
         >
           Add New Product
         </button>
-  
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -123,6 +141,12 @@ const Products = () => {
                 onClick={() => handleAddToCart(product)}
               >
                 Add to Cart
+              </button>
+              <button
+                className="mt-2 inline-block w-full rounded bg-red-600 px-6 py-2 text-sm font-medium text-white transition hover:bg-red-400"
+                onClick={() => handleDeleteProduct(product.id)}
+              >
+                Delete Product
               </button>
             </div>
           </div>
