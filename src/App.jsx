@@ -1,4 +1,3 @@
-// App.js
 import './App.css';
 import NavBar from './module/components/NavBar/NavBar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -16,6 +15,8 @@ import Orders from './module/components/Orders/Orders';
 import Categories from './module/components/Categories/Categories';
 import { useState } from 'react';
 import AddProduct from './module/components/product/AddProduct';
+import ChatBot from './module/pages/chatBot/ChatBot';
+import './module/pages/chatBot/ChatBot.css'; // استيراد الستايل
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -32,7 +33,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* Passing the loggedIn state and handleLogout function to NavBar */}
       <NavBar loggedIn={loggedIn} onLogout={handleLogout} />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -49,6 +49,7 @@ function App() {
         <Route path='ProductsDetails/:id' element={<ProductDetail />} />
       </Routes>
       <Footer />
+      <ChatBot />
     </BrowserRouter>
   );
 }
