@@ -79,17 +79,23 @@ const ChatBot = () => {
     setError(null);
   };
 
-  // خيارات الأزرار السريعة (عامة لمتجر إلكتروني وشركة تقنية)
-  const quickOptions = [
-    { id: 'opt1', text: 'المنتجات والخدمات', message: 'ما هي الخدمات المتوفرة لديكم؟' },
-    { id: 'opt2', text: 'الشحن', message: 'كيف تتم عملية الشحن؟' },
-    { id: 'opt3', text: 'معلومات الشركة', message: 'أخبروني عن شركتكم' },
-    { id: 'opt4', text: 'التواصل', message: 'كيف يمكنني التواصل معكم؟' },
-    { id: 'opt5', text: 'دعم فني', message: 'أحتاج إلى دعم فني' },
-    { id: 'opt6', text: 'طرق التواصل', message: 'ما هي طرق التواصل معكم؟' },
-    { id: 'opt7', text: 'ساعات العمل', message: 'ما هي ساعات العمل لديكم؟' },
-    { id: 'opt8', text: 'نصائح الخدمة', message: 'كيف أختار الخدمة المناسبة؟' },
-  ];
+  // خيارات الأزرار السريعة (محدثة لتغطية جميع النوايا)
+const quickOptions = [
+  { id: 'opt1', text: 'تحية', message: 'مرحبًا' }, // نية: greet
+  { id: 'opt2', text: 'الخدمات المتوفرة', message: 'ما هي الخدمات التي تقدمها شركتكم؟' }, // نية: services_inquiry
+  { id: 'opt3', text: 'حماية المنازل', message: 'هل تقدمون خدمات حماية المنازل؟' }, // نية: home_security_services
+  { id: 'opt5', text: 'ساعات العمل', message: 'ما هي ساعات العمل؟' }, // نية: working_hours_inquiry
+  { id: 'opt6', text: 'خدمات الطوارئ', message: 'هل تقدمون خدمات الطوارئ؟' }, // نية: emergency_services_inquiry
+  { id: 'opt7', text: 'الأسعار', message: 'كم تكلف خدماتكم؟' }, // نية: pricing_inquiry
+  { id: 'opt8', text: 'الخصومات', message: 'هل تقدمون خصومات؟' }, // نية: discounts_inquiry
+  { id: 'opt9', text: 'التواصل', message: 'ما هي طرق التواصل معكم؟' }, // نية: customer_service_inquiry
+  { id: 'opt10', text: 'تقديم شكوى', message: 'أريد تقديم شكوى' }, // نية: submit_complaint
+  { id: 'opt11', text: 'إعطاء تعليق', message: 'تعليق: الخدمة ممتازة' }, // نية: provide_feedback
+  { id: 'opt12', text: 'أنا سعيد', message: 'أشعر بسعادة عارمة' }, // نية: mood_great
+  { id: 'opt13', text: 'أنا حزين', message: 'أشعر بالإحباط' }, // نية: mood_unhappy
+  { id: 'opt14', text: 'هل أنت روبوت؟', message: 'هل أنت روبوت؟' }, // نية: bot_challenge
+  { id: 'opt17', text: 'وداع', message: 'مع السلامة' }, // نية: goodbye
+];
 
   return (
     <div className={`chatbot-container ${isOpen ? 'open' : ''}`}>
